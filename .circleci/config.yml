@@ -55,8 +55,6 @@ workflows:
   commit:
     jobs:
       - java-8
-      - java-10
-      - java-11
   nightly:
     triggers:
       - schedule:
@@ -69,3 +67,13 @@ workflows:
       - java-8
       - java-10
       - java-11
+  nightly-java7-backport:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - java7-backport
+    jobs:
+      - java-8
